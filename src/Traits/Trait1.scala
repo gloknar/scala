@@ -4,5 +4,5 @@ package Traits
 // constructores ni inicializadores
 
 trait Trait1 {
-
+ee
 }
