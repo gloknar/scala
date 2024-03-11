@@ -1,22 +1,38 @@
-package ClaseOOP3
+// CLASE CONSTRUCTORES MULTIPLES
+package ClaseOOP4
 
-class producto(id:Int, nombre:String) {
+//Como vamos a usar muchos constructores auxiliares, creamos
+// la clase sin ningun parametro ni paréntesis
+class producto {
 
-  println("me ha ejecutado el constructor de la clase producto")
+  //Creamos aqui los parametros de la clase
+  private var nombre:String = _
+  private var pvp:Double = _
+  private var gama:String = _
 
-  //////Constructor auxiliar, necesita como parametros los de la clase + los suyos propios
-  // Primero creo su propio parametro en modo privado por seguridad
-  private var pvp:Double = 0.0
-  def this(id: Int, nombre:String, pvp:Double) = {
-    this(id, nombre) //Estos parametros se resuelven con el construtor padre
-    this.pvp = pvp  // Este parametro del constructor adicional lo resuelvo por separado
+
+  def imprimir():Unit = {
+    println(nombre, pvp, gama)
   }
 
-  // metodo de la clase producto
-  def imprimir():Unit ={
-    println(id, nombre,pvp)
+
+
+  //Constructores auxiliares
+  def this(nombre:String) = {
+
+    //Primero invocamos a un constructor anterior, que en este caso
+    //será el constructor primario
+    this()
+    this.nombre = nombre
   }
 
+  def this(nombre:String, pvp:Double, gama:String) = {
+
+    //Llamo al constructor anterior
+    this(nombre)
+    this.pvp = pvp
+    this.gama = gama
+  }
 
 }
 
@@ -24,15 +40,16 @@ class producto(id:Int, nombre:String) {
 object Programa {
   def main(args: Array[String]): Unit = {
 
-    //Instancia creada con el constructor primario, no tiene PVP
-    var cpu1 = new producto(id = 1, nombre= "Ryzen 3900X")
+    //Creado con constructor primario
+    var producto1 = new producto()
+    producto1.imprimir()
 
-    cpu1.imprimir()
+    //Creado con constructor auxiliar 1
+    var producto2 = new producto(nombre = "CPU")
+    producto2.imprimir()
 
-    //Instancia creada con el constructor auxiliar, tiene PVP
-    var cpu2 = new producto(id = 2, nombre = "Intel I7 7700K", pvp = 500.99)
-
-    cpu2.imprimir()
-
+    //Creado con constructor auxiliar 2
+    var producto3 = new producto(nombre = "Trust", pvp = 70.0, gama = "Oficina")
+    producto3.imprimir()
   }
 }
