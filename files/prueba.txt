@@ -1,0 +1,4 @@
+archivo de prueba
+linea 2
+oxalato de calcio
+fin

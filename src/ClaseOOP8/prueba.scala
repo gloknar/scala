@@ -5,7 +5,7 @@ package ClaseOOP8
 case class prueba(nombre:String, edad:Int)
 
 
-object programa {
+object principal {
   def main(args: Array[String]): Unit = {
 
     //El case class implementa un apply, enotnces no hace falta usar la clausula new
